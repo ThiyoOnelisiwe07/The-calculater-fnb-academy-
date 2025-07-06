@@ -1,0 +1,197 @@
+/* Reset*/
+html,body {
+  margin: 0;
+  padding: 0;
+  font-family: arial,sans-serif;
+  background-color: #202020;
+  height: 100%;
+  width: 100%;
+}
+/* Calculator container*/
+table {
+  width: 100vw;
+  height: 100vh;
+  background-color: #2f2f2f;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  border-radius: 20px;
+  padding: 10px;
+  border-collapse: collapse;
+}
+/*Display screen*/
+input[type="text"]{
+  width: 100%;
+  height: 60px;
+  font-size: 2rem;
+  text-align: right;
+  background-color: #1a1a1a;
+  color: white;
+  border:none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+/*Buttons*/
+td{
+  text-align: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  background-color: #4d4d4d;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #666;
+  transition: background-color 0.2s ease;
+}
+
+td:hover {
+  background-color: #5e5e5e;
+}
+/*Operator buttons*/
+td:last-child, td [onclick*="operatorBtnPressed"]{
+background-color: orange;
+color:white;
+}
+ td[onclick*="operatorBtnPressed"]:hover {
+  background-color: darkorange;
+ }
+ /*Equals button*/
+ td[colspan="4"]{
+  background-color: orange;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+ }
+ 
+ td[colspan="4"]:hover {
+  background-color: darkorange;
+ }
+/*AC button*/
+ td[onclick*="btnACPressed"]{
+  background-color: #ff6666;
+  color:white;
+ }
+
+ td[onclick*="btnACPressed"]:hover{
+  background-color: #ff4d4d;
+ }
+/* Make sure buttons scale on small screens */
+ @media (max-width: 400px){
+  td{
+    padding: 15px;
+    font-size: 1.2rem;
+
+  }
+  input[type="text"]{
+    height: 50px;
+    font-size: 1.8rem;
+  }
+ }
+/* Power and root function buttons*/
+td[onclick*="power"],
+td[onlick*="squareRoot"]{
+  background-color: #0066cc;
+  color:white;
+}
+td[onclick*="power"]:hover,
+td[onclick*="squareRoot"]:hover{
+  background-color: #005bb5;
+}
+/* Round the entire calculator container*/
+table{
+  border-radius: 20px;
+}
+/*Round the input display box*/
+input[type="text"]{
+  border-radius: 10px;
+}
+/*Round each button (cell)*/
+td{
+  border-radius: 12px;
+}
+td:hover {
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+/* Scientific buttons*/
+td[onclick*="scientific"],
+td[onclick*="insertPi"],
+td[onclick*="toggleSign"]{
+  background-color: #7b1fa2;
+  color: white;
+}
+td[onclick*="scientific"]:hover,
+td[onclick*="insertPi"]:hover
+td[onclick*="toggleSign"]:hover {
+background-color: #6a1b9a;
+}
+
+/*Style the calculater (table)*/
+table {
+width: 100vw;
+height: 100vh;
+padding: 10px;
+border-radius: 20px;
+background-color:  #2f2f2f;
+box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+border-collapse: collapse;
+}
+/*Scales with screen height*/
+td{
+  font-size: 2.5vh;
+}
+
+#voice-command-ui {
+  position: fixed;
+  bottom: 20px; /* or use left: 20px; if you prefer */
+  right: 20px;  /* change this to 'left: 20px;' for left corner */
+  z-index: 999;
+  background-color: #2d2d2d;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#voiceBtn {
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: orange;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#voiceBtn:hover {
+  background-color: darkorange;
+}
+
+#voiceStatus {
+  color: white;
+  font-size: 1rem;
+}
+
+
+/* === Voice Command Button Styling === */
+.voice-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  width:auto;
+  height: auto;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ff9800;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.voice-btn:hover {
+  background-color: #e68900;
+}

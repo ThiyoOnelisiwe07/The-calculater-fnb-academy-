@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script defer src="features.js"></script>
+</head>
+<body>   
+  <table border="1">
+    <tr>
+      <td colspan="4">
+        <input type="text" id="inputBox" value="0"/>
+      </td>
+    </tr>
+    <tr>
+       <td onclick="digitBtnPressed(7)">7</td>
+       <td onclick="digitBtnPressed(8)">8</td>
+       <td onclick="digitBtnPressed(9)">9</td>
+       <td onclick="operatorBtnPressed('x')">x</td>
+    </tr>
+    <tr>
+      <td onclick="digitBtnPressed(4)">4</td>
+      <td onclick="digitBtnPressed(5)">5</td>
+      <td onclick="digitBtnPressed(6)">6</td>
+      <td onclick="operatorBtnPressed('-')">-</td>
+    </tr>
+    <tr>
+      <td onclick="digitBtnPressed(1)">1</td>
+      <td onclick="digitBtnPressed(2)">2</td>
+      <td onclick="digitBtnPressed(3)">3</td>
+      <td onclick="operatorBtnPressed('+')">+</td>
+    </tr>
+    <tr>
+        <td colspan="2"onclick="digitBtnPressed(0)">0</td>
+
+        <td onclick="btnACPressed()">AC</td>
+        <td onclick="operatorBtnPressed('/')">/</td>
+    </tr>
+     <tr>
+        <td colspan="4" onclick="equalsBtnPressed()">=</td>
+     </tr>
+     <tr>
+        <td onclick="power(2)">x^2</td>
+        <td onclick="power(3)">x^3</td>
+        <td colspan="2" onclick="squareRoot()">√</td>
+    </tr>
+    <tr>
+       <td onclick="insertPi()">π</td>
+       <td onclick="toggleSign()">±</td>
+       <td onclick="scientific('sin')">sin</td>
+       <td onclick="scientific('cos')">cos</td>
+    </tr>
+    <tr>
+       <td onclick="scientific('tan')">tan</td>
+       <td onclick="scientific('log')">log</td>
+       <td onclick="scientific('ln')">ln</td>
+       <td onclick="scientific('exp')">e^x</td>
+    </tr>
+  </table>
+  <script>
+     var newLine = true;   //Boolean variable. Determine if the next thing the user types should be on the new line
+     var value1;
+     var currentOperator;
+      // Event handler for when any digit button is pressed
+      function digitBtnPressed(button){
+
+        if(newLine){
+          document.getElementById("inputBox").value = button;
+          newLine = false;
+        } else {
+        var currentValue = document.getElementById("inputBox").value;
+        document.getElementById("inputBox").value = currentValue + button;
+        }
+      }
+      function power(n){
+        let value= parseFloat(document.getElementById("inputBox").value);
+        document.getElementById("inputBox").value = Math.pow(value, n);
+        newLine = true;
+      }
+      function squareRoot(){
+        let value = parseFloat(document.getElementById("inputBox").value);
+        document.getElementById("inputBox").value = math.sqrt(value);
+        newLine = true;
+      }
+      //Event handler for when the AC button is pressed
+      function btnACPressed(){
+        document.getElementById("inputBox").value = 0;
+        newLine = true;
+      }
+      //Event handler for operator buttons
+      function operatorBtnPressed(operator){
+        currentOperator = operator;
+        value1 = parseInt(document.getElementById("inputBox").value) ;
+        newLine = true;
+      }
+      //Event handler for equals to button
+       function equalsBtnPressed(){
+            var value2 = parseInt(document.getElementById("inputBox").value);
+            var finalTotal;
+       
+            switch(currentOperator){
+              case "+":
+                finalTotal = value1 + value2;
+                break;
+              case "-":
+                finalTotal = value1 - value2;
+                break;
+              case "/":
+                finalTotal = value1 / value2;
+                break;
+              case "x":
+                finalTotal = value1 * value2;
+                break;
+            }
+
+          document.getElementById("inputBox").value = finalTotal;
+          value1 = 0;
+          newLine = true;
+          }
+  // Insert π (Pi)
+  function insertPi() {
+    document.getElementById("inputBox").value = Math.PI.toFixed(6);
+    newLine = true;
+  }
+
+  // Toggle +/-
+  function toggleSign() {
+    let val = parseFloat(document.getElementById("inputBox").value);
+    document.getElementById("inputBox").value = -val;
+  }
+
+  // Scientific functions
+  function scientific(func) {
+    let val = parseFloat(document.getElementById("inputBox").value);
+    let result;
+
+    switch (func) {
+      case 'sin':
+        result = Math.sin(val * Math.PI / 180); // degrees to radians
+        break;
+      case 'cos':
+        result = Math.cos(val * Math.PI / 180);
+        break;
+      case 'tan':
+        result = Math.tan(val * Math.PI / 180);
+        break;
+      case 'log':
+        result = Math.log10(val);
+        break;
+      case 'ln':
+        result = Math.log(val);
+        break;
+      case 'exp':
+        result = Math.exp(val);
+        break;
+    }
+
+    document.getElementById("inputBox").value = result.toFixed(6);
+    newLine = true;
+  }
+  
+  </script>
+  </body>
+</html>
